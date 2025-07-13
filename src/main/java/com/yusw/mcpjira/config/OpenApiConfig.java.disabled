@@ -1,0 +1,63 @@
+package com.yusw.mcpjira.config;
+
+import java.util.List;
+import org.springframework.context.annotation.Bean;
+
+/**
+ * OpenAPI 配置类
+ * 配置 Swagger UI 和 API 文档
+ * 
+ * @author yusw
+ */
+@Configuration
+public class OpenApiConfig {
+
+    @Value("${server.servlet.context-path:/}")
+    private String contextPath;
+
+    @Value("${server.port:8010}")
+    private String serverPort;
+
+    @Bean
+    public OpenAPI mcpJiraOpenAPI() {
+        return new OpenAPI()
+                .info(new Info()
+                        .title("MCP JIRA Service API")
+                        .description("""
+                                基于Spring Boot 3.x、Java 21和响应式编程的企业级MCP协议服务框架，
+                                专注于JIRA集成和智能代码生成解决方案。
+                                
+                                An enterprise-level MCP (Model Context Protocol) service framework 
+                                based on Spring Boot 3.x, Java 21, and reactive programming, 
+                                focusing on JIRA integration and intelligent code generation solutions.
+                                """)
+                        .version("1.0.0")
+                        .contact(new Contact()
+                                .name("YUSW")
+                                .email("your-email@example.com")
+                                .url("https://github.com/yourusername/mcp-jira-service"))
+                        .license(new License()
+                                .name("Apache 2.0")
+                                .url("https://www.apache.org/licenses/LICENSE-2.0.html")))
+                .servers(List.of(
+                        new Server()
+                                .url("http://localhost:" + serverPort + contextPath)
+                                .description("本地开发服务器 (Local Development Server)"),
+                        new Server()
+                                .url("https://your-domain.com" + contextPath)
+                                .description("生产环境服务器 (Production Server)")))
+                .tags(List.of(
+                        new Tag()
+                                .name("JIRA")
+                                .description("JIRA 集成相关接口 (JIRA Integration APIs)"),
+                        new Tag()
+                                .name("MCP")
+                                .description("MCP 协议相关接口 (MCP Protocol APIs)"),
+                        new Tag()
+                                .name("代码生成")
+                                .description("代码生成相关接口 (Code Generation APIs)"),
+                        new Tag()
+                                .name("健康检查")
+                                .description("系统健康检查接口 (Health Check APIs)")));
+    }
+} 

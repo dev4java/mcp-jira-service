@@ -1,0 +1,31 @@
+spring:
+  application:
+    name: mcp-jira-service-test
+
+# 测试用的 JIRA 配置(Test JIRA Configuration)
+jira:
+  base-url: https://test-jira-server.com
+  username: test-user
+  password: test-password
+  timeout: 5000
+  max-connections: 10
+
+# 测试用的 MCP 配置(Test MCP Configuration)
+mcp:
+  server:
+    host: localhost
+    port: 8082
+    protocol: websocket
+  
+  code-generation:
+    output-directory: ./test-output
+    template-directory: ./test-templates
+    default-package: com.test
+
+# 测试日志配置(Test Logging Configuration)
+logging:
+  level:
+    com.yusw.mcpjira: DEBUG
+    org.springframework.web: WARN
+  pattern:
+    console: "%d{HH:mm:ss.SSS} [%thread] %-5level %logger{36} - %msg%n" 

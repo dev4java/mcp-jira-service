@@ -1,0 +1,152 @@
+{
+    "examples": [
+        {
+            "title": "获取 JIRA 问题",
+            "description": "获取指定键的 JIRA 问题详情",
+            "request": {
+                "jsonrpc": "2.0",
+                "id": 1,
+                "method": "jira.getIssue",
+                "params": {
+                    "issueKey": "PROJECT-123"
+                }
+            },
+            "response": {
+                "jsonrpc": "2.0",
+                "id": 1,
+                "result": {
+                    "key": "PROJECT-123",
+                    "summary": "创建用户管理功能",
+                    "description": "实现用户的增删改查功能",
+                    "status": "In Progress",
+                    "priority": "High",
+                    "issueType": "Story",
+                    "assignee": "张三",
+                    "reporter": "李四",
+                    "labels": ["backend", "api"]
+                }
+            }
+        },
+        {
+            "title": "搜索 JIRA 问题",
+            "description": "使用 JQL 搜索 JIRA 问题",
+            "request": {
+                "jsonrpc": "2.0",
+                "id": 2,
+                "method": "jira.searchIssues",
+                "params": {
+                    "jql": "project = PROJECT AND status = 'In Progress'",
+                    "maxResults": 10
+                }
+            },
+            "response": {
+                "jsonrpc": "2.0",
+                "id": 2,
+                "result": {
+                    "total": 5,
+                    "issues": [
+                        {
+                            "key": "PROJECT-123",
+                            "summary": "创建用户管理功能",
+                            "status": "In Progress"
+                        }
+                    ]
+                }
+            }
+        },
+        {
+            "title": "从 JIRA 生成代码",
+            "description": "根据 JIRA 问题生成功能代码",
+            "request": {
+                "jsonrpc": "2.0",
+                "id": 3,
+                "method": "code.generateFromJira",
+                "params": {
+                    "jiraKey": "PROJECT-123",
+                    "codeType": "all",
+                    "packageName": "com.yusw.user",
+                    "framework": "spring-boot"
+                }
+            },
+            "response": {
+                "jsonrpc": "2.0",
+                "id": 3,
+                "result": {
+                    "jiraKey": "PROJECT-123",
+                    "generatedFiles": 3,
+                    "files": [
+                        {
+                            "fileName": "UserEntity.java",
+                            "className": "UserEntity",
+                            "packageName": "com.yusw.user.entity",
+                            "codeType": "entity",
+                            "framework": "spring-boot",
+                            "generatedAt": "2024-01-01T12:00:00",
+                            "content": "package com.yusw.user.entity;\n\npublic class UserEntity {\n    // Generated code...\n}"
+                        },
+                        {
+                            "fileName": "UserService.java",
+                            "className": "UserService",
+                            "packageName": "com.yusw.user.service",
+                            "codeType": "service",
+                            "framework": "spring-boot",
+                            "generatedAt": "2024-01-01T12:00:00",
+                            "content": "package com.yusw.user.service;\n\n@Service\npublic class UserService {\n    // Generated code...\n}"
+                        },
+                        {
+                            "fileName": "UserController.java",
+                            "className": "UserController",
+                            "packageName": "com.yusw.user.controller",
+                            "codeType": "controller",
+                            "framework": "spring-boot",
+                            "generatedAt": "2024-01-01T12:00:00",
+                            "content": "package com.yusw.user.controller;\n\n@RestController\npublic class UserController {\n    // Generated code...\n}"
+                        }
+                    ],
+                    "message": "代码生成成功"
+                }
+            }
+        },
+        {
+            "title": "测试 JIRA 连接",
+            "description": "测试与 JIRA 服务器的连接",
+            "request": {
+                "jsonrpc": "2.0",
+                "id": 4,
+                "method": "jira.testConnection",
+                "params": {}
+            },
+            "response": {
+                "jsonrpc": "2.0",
+                "id": 4,
+                "result": {
+                    "connected": true,
+                    "message": "连接成功"
+                }
+            }
+        },
+        {
+            "title": "错误响应示例",
+            "description": "当请求失败时的错误响应",
+            "request": {
+                "jsonrpc": "2.0",
+                "id": 5,
+                "method": "jira.getIssue",
+                "params": {
+                    "issueKey": "INVALID-KEY"
+                }
+            },
+            "response": {
+                "jsonrpc": "2.0",
+                "id": 5,
+                "error": {
+                    "code": -32603,
+                    "message": "Failed to get JIRA issue",
+                    "data": {
+                        "details": "Issue not found"
+                    }
+                }
+            }
+        }
+    ]
+} 

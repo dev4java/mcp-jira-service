@@ -1,0 +1,108 @@
+# 应用配置(Application Configuration)
+server:
+  port: 8080
+  servlet:
+    context-path: /jira-mcp
+
+spring:
+  application:
+    name: yusw-jira-mcp-client
+  
+  # 如果使用数据库
+  datasource:
+    url: jdbc:h2:mem:testdb
+    driver-class-name: org.h2.Driver
+    username: sa
+    password: 
+  
+  jpa:
+    database-platform: org.hibernate.dialect.H2Dialect
+    hibernate:
+      ddl-auto: create-drop
+    show-sql: true
+
+# JIRA MCP 服务(JIRA MCP Service)配置
+jira:
+  mcp:
+    # JIRA MCP 服务(JIRA MCP Service)地址
+    service-url: http://localhost:8010/mcp-jira/api
+    # 连接超时时间 (毫秒)
+    connection-timeout: 5000
+    # 读取超时时间 (毫秒)
+    read-timeout: 30000
+    # 重试次数
+    retry-attempts: 3
+    # 是否启用健康检查
+    health-check:
+      enabled: true
+      interval: 60000  # 60秒检查一次
+    # 缓存配置
+    cache:
+      enabled: true
+      ttl: 300000      # 5分钟缓存
+
+# 日志配置(Logging Configuration)
+logging:
+  level:
+    com.yusw.client: DEBUG
+    org.springframework.web.client: DEBUG
+  pattern:
+    console: "%d{yyyy-MM-dd HH:mm:ss} - %msg%n"
+
+# Actuator 配置
+management:
+  endpoints:
+    web:
+      exposure:
+        include: health,info,metrics
+  endpoint:
+    health:
+      show-details: always
+
+# 环境特定配置
+---
+# 开发环境
+spring:
+  config:
+    activate:
+      on-profile: dev
+
+jira:
+  mcp:
+    service-url: http://localhost:8010/mcp-jira/api
+
+logging:
+  level:
+    root: INFO
+    com.yusw: DEBUG
+
+---
+# 测试环境
+spring:
+  config:
+    activate:
+      on-profile: test
+
+jira:
+  mcp:
+    service-url: http://test-server:8010/mcp-jira/api
+    connection-timeout: 10000
+    read-timeout: 60000
+
+---
+# 生产环境
+spring:
+  config:
+    activate:
+      on-profile: prod
+
+jira:
+  mcp:
+    service-url: ${JIRA_MCP_SERVICE_URL:http://prod-server:8010/mcp-jira/api}
+    connection-timeout: ${JIRA_MCP_CONNECTION_TIMEOUT:10000}
+    read-timeout: ${JIRA_MCP_READ_TIMEOUT:60000}
+
+logging:
+  level:
+    root: WARN
+    com.yusw: INFO 

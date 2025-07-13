@@ -1,0 +1,263 @@
+# =======================
+# Java & Maven 构建输出 (Java & Maven Build Output)
+# =======================
+target/
+build/
+out/
+*.class
+*.jar
+*.war
+*.ear
+*.nar
+**/target/
+**/build/
+
+# =======================
+# IDE 配置文件 (IDE Configuration Files)
+# =======================
+
+# IntelliJ IDEA
+.idea/
+*.iml
+*.iws
+*.ipr
+.idea/jarRepositories.xml
+.idea/compiler.xml
+.idea/encodings.xml
+.idea/misc.xml
+.idea/workspace.xml
+.idea/modules.xml
+.idea/libraries/
+.idea/dictionaries/
+.idea/httpRequests/
+.idea/uiDesigner.xml
+.idea/dbnavigator.xml
+
+# Visual Studio Code
+.vscode/
+*.code-workspace
+
+# Cursor IDE
+.cursor/
+.cursorindexingignore
+
+# Eclipse
+.metadata/
+.project
+.classpath
+.settings/
+bin/
+tmp/
+*.tmp
+*.bak
+*.swp
+*~.nib
+local.properties
+.loadpath
+.recommenders
+
+# NetBeans
+/nbproject/private/
+/nbbuild/
+/dist/
+/nbdist/
+/.nb-gradle/
+
+# Sublime Text
+*.sublime-project
+*.sublime-workspace
+
+# =======================
+# 日志文件 (Log Files)
+# =======================
+# 忽略日志文件但保留目录结构 (Ignore log files but keep directory structure)
+logs/*.log
+logs/**/*.log
+logs/**/*.out
+*.log
+*.log.*
+*.out
+spring.log
+application.log
+nohup.out
+
+# =======================
+# 测试和输出 (Test & Output)
+# =======================
+test-output/
+test-results/
+coverage/
+*.exec
+*.jacoco
+.sonar/
+
+# =======================
+# 依赖和包管理 (Dependencies & Package Management)
+# =======================
+# Node.js (如果项目包含前端部分)
+node_modules/
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+package-lock.json
+yarn.lock
+
+# Maven
+.mvn/wrapper/maven-wrapper.properties
+dependency-reduced-pom.xml
+
+# Gradle
+.gradle/
+gradle-app.setting
+!gradle-wrapper.jar
+!gradle-wrapper.properties
+
+# =======================
+# 操作系统文件 (Operating System Files)
+# =======================
+# macOS
+.DS_Store
+.AppleDouble
+.LSOverride
+Icon
+._*
+.DocumentRevisions-V100
+.fseventsd
+.Spotlight-V100
+.TemporaryItems
+.Trashes
+.VolumeIcon.icns
+.com.apple.timemachine.donotpresent
+
+# Windows
+Thumbs.db
+Thumbs.db:encryptable
+ehthumbs.db
+ehthumbs_vista.db
+*.stackdump
+[Dd]esktop.ini
+$RECYCLE.BIN/
+*.cab
+*.msi
+*.msix
+*.msm
+*.msp
+*.lnk
+
+# Linux
+*~
+.directory
+.Trash-*
+
+# =======================
+# 配置和敏感文件 (Configuration & Sensitive Files)
+# =======================
+# 环境变量文件 (Environment Files)
+.env
+.env.local
+.env.production
+.env.development
+.env.test
+
+# 应用配置文件 (Application Config Files)
+application-local.yml
+application-local.yaml
+application-local.properties
+application-dev.yml
+application-dev.yaml
+application-dev.properties
+application-private.yml
+application-private.yaml
+application-private.properties
+
+# 密钥文件 (Key Files)
+*.key
+*.p12
+*.jks
+*.keystore
+*.pem
+*.crt
+*.cert
+
+# =======================
+# 缓存和临时文件 (Cache & Temporary Files)
+# =======================
+# Spring Boot DevTools
+.spring-boot-devtools.properties
+
+# 缓存目录 (Cache Directories)
+.cache/
+.tmp/
+tmp/
+temp/
+*.tmp
+*.temp
+
+# 备份文件 (Backup Files)
+*.bak
+*.backup
+*.orig
+*~
+
+# =======================
+# 版本控制 (Version Control)
+# =======================
+.git/
+*.patch
+*.diff
+
+# =======================
+# 文档和分析工具 (Documentation & Analysis Tools)
+# =======================
+# SpecStory
+.specstory/
+
+# SonarQube
+.sonar/
+.scannerwork/
+
+# JaCoCo
+jacoco.exec
+*.exec
+
+# =======================
+# 部署和容器 (Deployment & Containers)
+# =======================
+# Docker
+*.pid
+*.seed
+*.pid.lock
+
+# Kubernetes
+*.kubeconfig
+
+# =======================
+# 项目特定文件 (Project Specific Files)
+# =======================
+# 生成的代码输出 (Generated Code Output)
+generated-code/
+generated-projects/
+generated/
+
+# 下载的文件 (Downloaded Files)
+downloads/
+*.zip
+*.tar.gz
+*.rar
+
+# 数据库文件 (Database Files)
+*.db
+*.sqlite
+*.sqlite3
+*.h2.db
+
+# 其他临时文件 (Other Temporary Files)
+*.swp
+*.swo
+*~
+.#*
+\#*#
+.*.sw[a-z]
+*.un~
+Session.vim
+.netrwhist

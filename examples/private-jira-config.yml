@@ -1,0 +1,125 @@
+# 私有化部署 JIRA 服务器配置示例
+# 适用于企业内部部署的 JIRA 服务器，使用用户名和密码认证
+
+server:
+  port: 8080
+  servlet:
+    context-path: /mcp-jira
+
+spring:
+  application:
+    name: mcp-jira-service
+
+# JIRA 私有化部署配置
+jira:
+  # 私有化部署的 JIRA 服务器地址
+  base-url: https://jira.company.com
+  # 或者使用 HTTP（如果是内网环境）
+  # base-url: http://jira.company.com:8080
+  
+  # JIRA 用户名
+  username: your-username
+  
+  # JIRA 密码
+  password: your-password
+  
+  # 请求超时时间（毫秒）
+  timeout: 30000
+  
+  # 最大连接数
+  max-connections: 50
+
+# MCP 服务配置
+mcp:
+  server:
+    host: localhost
+    port: 8081
+    protocol: websocket
+  
+  code-generation:
+    output-directory: ./generated-code
+    template-directory: ./templates
+    default-package: com.company.generated
+
+# 日志配置(Logging Configuration)
+logging:
+  level:
+    com.yusw.mcpjira: INFO
+    org.springframework.web: WARN
+    org.springframework.webflux: WARN
+  pattern:
+    console: "%d{yyyy-MM-dd HH:mm:ss} [%thread] %-5level %logger{36} - %msg%n"
+    file: "%d{yyyy-MM-dd HH:mm:ss} [%thread] %-5level %logger{36} - %msg%n"
+  file:
+    name: logs/mcp-jira-service.log
+
+# 管理端点配置
+management:
+  endpoints:
+    web:
+      exposure:
+        include: health,info,metrics
+  endpoint:
+    health:
+      show-details: always
+
+# 异步处理配置
+async:
+  executor:
+    core-pool-size: 5
+    max-pool-size: 10
+    queue-capacity: 100
+    thread-name-prefix: "mcp-async-"
+
+---
+
+# 使用环境变量的配置示例
+# 在生产环境中，建议使用环境变量来配置敏感信息
+
+# 设置环境变量：
+# export JIRA_BASE_URL=https://jira.company.com
+# export JIRA_USERNAME=your-username
+# export JIRA_PASSWORD=your-password
+
+jira:
+  base-url: ${JIRA_BASE_URL:https://jira.company.com}
+  username: ${JIRA_USERNAME:your-username}
+  password: ${JIRA_PASSWORD:your-password}
+  timeout: ${JIRA_TIMEOUT:30000}
+  max-connections: ${JIRA_MAX_CONNECTIONS:50}
+
+mcp:
+  server:
+    host: ${MCP_HOST:localhost}
+    port: ${MCP_PORT:8081}
+    protocol: ${MCP_PROTOCOL:websocket}
+  
+  code-generation:
+    output-directory: ${CODE_OUTPUT_DIR:./generated-code}
+    template-directory: ${TEMPLATE_DIR:./templates}
+    default-package: ${DEFAULT_PACKAGE:com.company.generated}
+
+---
+
+# Docker 环境配置示例
+# 如果使用 Docker 部署，可以参考以下配置
+
+jira:
+  # 如果 JIRA 服务器也在 Docker 网络中，可以使用容器名称
+  base-url: ${JIRA_BASE_URL:http://jira-server:8080}
+  username: ${JIRA_USERNAME}
+  password: ${JIRA_PASSWORD}
+  timeout: 60000  # Docker 环境可能需要更长的超时时间
+  max-connections: 20
+
+server:
+  port: 8080
+  # 在 Docker 环境中监听所有接口
+  address: 0.0.0.0
+
+logging:
+  level:
+    root: INFO
+    com.yusw.mcpjira: DEBUG
+  pattern:
+    console: "%d{yyyy-MM-dd HH:mm:ss} [%thread] %-5level %logger{36} - %msg%n" 

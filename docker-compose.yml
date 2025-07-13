@@ -1,0 +1,58 @@
+version: '3.8'
+
+services:
+  # MCP JIRA 服务主应用 - 开箱即用
+  mcp-jira-service:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    image: mcp-jira-service:latest
+    container_name: mcp-jira-service
+    restart: unless-stopped
+    ports:
+      - "8010:8010"  # 应用端口
+      - "8011:8011"  # 管理端口（健康检查、监控）
+    environment:
+      # Spring 配置
+      SPRING_PROFILES_ACTIVE: docker
+      
+      # JIRA 配置（请在 .env 文件中设置或直接修改）
+      JIRA_BASE_URL: ${JIRA_BASE_URL:-https://your-jira-server.com}
+      JIRA_USERNAME: ${JIRA_USERNAME:-your-username}
+      JIRA_PASSWORD: ${JIRA_PASSWORD:-your-password}
+      
+      # JVM 配置（优化内存使用）
+      JAVA_OPTS: >-
+        -Xmx512m 
+        -Xms256m
+        -XX:+UseG1GC
+        -XX:+UseContainerSupport
+        -XX:MaxRAMPercentage=75.0
+      
+      # 应用配置
+      SERVER_PORT: 8010
+      MANAGEMENT_PORT: 8011
+      LOG_LEVEL_APP: INFO
+      
+      # 开发模式配置（可选）
+      ENABLE_DEBUG: ${ENABLE_DEBUG:-false}
+      CODE_GENERATION_ENABLED: true
+    volumes:
+      # 日志持久化（可选）
+      - ./logs:/app/logs
+      # 代码生成输出目录
+      - ./generated-code:/app/generated-code
+    networks:
+      - mcp-jira-network
+    healthcheck:
+      test: ["CMD", "curl", "-f", "http://localhost:8011/actuator/health"]
+      interval: 30s
+      timeout: 10s
+      retries: 3
+      start_period: 30s
+
+# 网络配置
+networks:
+  mcp-jira-network:
+    driver: bridge
+    name: mcp-jira-network 

@@ -1,0 +1,105 @@
+server:
+  port: ${SERVER_PORT:8010}
+  servlet:
+    context-path: /mcp-jira
+
+spring:
+  application:
+    name: mcp-jira-service
+  
+  # Jackson 配置(Jackson Configuration)
+  jackson:
+    default-property-inclusion: non_null
+    serialization:
+      write-dates-as-timestamps: false
+      indent-output: true
+    deserialization:
+      fail-on-unknown-properties: false
+      accept-single-value-as-array: true
+  
+  # WebFlux 配置(WebFlux Configuration)
+  webflux:
+    base-path: /api
+
+# JIRA 配置(JIRA Configuration) - 必填项已提供默认值
+jira:
+  base-url: ${JIRA_BASE_URL:your jira base url}  # 演示 JIRA 地址
+  username: ${JIRA_USERNAME:your jira username}  # 演示用户名
+  
+  # JIRA 认证方式（二选一）：
+  # 方式1：API Token 认证（推荐，更安全）- 优先使用
+  api-token: ${JIRA_API_TOKEN:}  # 设置此项时会优先使用 API Token 认证
+  
+  # 方式2：密码认证（传统方式）- API Token 为空时使用
+  password: ${JIRA_PASSWORD:your jira password}  # 演示密码，仅在没有 API Token 时使用
+  
+  timeout: ${JIRA_TIMEOUT:30000}
+  max-connections: ${JIRA_MAX_CONNECTIONS:20}  # 减少连接数
+  
+# MCP 服务配置(MCP Service Configuration) - 开箱即用
+mcp:
+  server:
+    host: ${MCP_HOST:localhost}
+    port: ${MCP_PORT:8021}
+    protocol: ${MCP_PROTOCOL:websocket}
+  
+  # 代码生成配置(Code Generation Configuration)
+  code-generation:
+    output-directory: ${CODE_OUTPUT_DIR:./generated-code}
+    template-directory: ${TEMPLATE_DIR:./templates}
+    default-package: ${DEFAULT_PACKAGE:com.generated}
+    enabled: ${CODE_GENERATION_ENABLED:true}
+    
+# 管理端点配置(Management Endpoint Configuration) - 简化版
+management:
+  endpoints:
+    web:
+      exposure:
+        include: health,info,metrics  # 移除 prometheus，简化监控
+      base-path: /actuator
+  endpoint:
+    health:
+      show-details: always  # 开发友好
+      probes:
+        enabled: true
+  info:
+    git:
+      mode: simple  # 简化 git 信息
+  server:
+    port: ${MANAGEMENT_PORT:8011}
+
+# 日志配置(Logging Configuration) - 开箱即用
+logging:
+  level:
+    com.yusw.mcpjira: ${LOG_LEVEL_APP:INFO}  # 默认 INFO 级别
+    org.springframework.web: ${LOG_LEVEL_SPRING:WARN}  # 减少 Spring 日志
+    org.springframework.webflux: ${LOG_LEVEL_WEBFLUX:WARN}
+    com.atlassian.jira: ${LOG_LEVEL_JIRA:WARN}
+  pattern:
+    console: "%d{HH:mm:ss} %-5level %logger{36} - %msg%n"  # 简化控制台输出
+    file: "%d{yyyy-MM-dd HH:mm:ss} [%thread] %-5level %logger{36} - %msg%n"
+  file:
+    name: ${LOG_FILE:logs/mcp-jira-service.log}
+    max-size: ${LOG_MAX_SIZE:10MB}
+    max-history: ${LOG_MAX_HISTORY:7}  # 减少历史文件数量
+
+# 线程池配置(Thread Pool Configuration) - 优化资源使用
+async:
+  executor:
+    core-pool-size: ${ASYNC_CORE_POOL_SIZE:2}  # 减少核心线程数
+    max-pool-size: ${ASYNC_MAX_POOL_SIZE:5}   # 减少最大线程数
+    queue-capacity: ${ASYNC_QUEUE_CAPACITY:50}  # 减少队列容量
+    thread-name-prefix: "mcp-async-"
+    keep-alive: ${ASYNC_KEEP_ALIVE:60}
+
+# 应用信息配置(Application Info Configuration)
+info:
+  app:
+    name: '@project.name@'
+    description: '@project.description@'
+    version: '@project.version@'
+    encoding: '@project.build.sourceEncoding@'
+    java:
+      version: '@java.version@'
+  build:
+    time: '@maven.build.timestamp@' 

@@ -1,0 +1,12 @@
+{
+  "mcpServers": {
+    "jira-service": {
+      "command": "node",
+      "args": ["mcp-server-proxy.js"],
+      "env": {
+        "MCP_SERVER_URL": "http://localhost:8010/mcp-jira/api/mcp",
+        "MCP_SERVER_NAME": "JIRA Code Generator"
+      }
+    }
+  }
+} 

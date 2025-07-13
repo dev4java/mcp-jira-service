@@ -1,17 +1,16 @@
 #!/bin/bash
 
 # MCP JIRA 服务 API 调用示例
-# 适用于私有化部署的 JIRA 服务器
-# 请在使用前修改服务器地址和认证信息
+# GitHub: https://github.com/dev4java/mcp-jira-service
+# 文档: https://github.com/dev4java/mcp-jira-service/wiki
 
-BASE_URL="http://localhost:8080"
+BASE_URL="http://localhost:8010"
 
 # 确保已经配置了 JIRA 连接信息
-# export JIRA_BASE_URL=https://jira.company.com
-# export JIRA_USERNAME=your-username
-# export JIRA_PASSWORD=your-password
+# 查看配置指南: https://github.com/dev4java/mcp-jira-service/blob/main/QUICK_START.md
 
 echo "=== MCP JIRA 服务 API 调用示例 ==="
+echo "项目地址: https://github.com/dev4java/mcp-jira-service"
 echo
 
 # 0. 检查环境变量

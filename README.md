@@ -110,7 +110,7 @@ JIRA_API_TOKEN=your-api-token
 
 - 🐛 [问题反馈](https://github.com/dev4java/mcp-jira-service/issues)
 - 💬 [讨论交流](https://github.com/dev4java/mcp-jira-service/discussions)
-- 📧 邮件: [项目维护者](mailto:dev4java@example.com)
+- 📧 邮件: [项目维护者](mailto:120171383@qq.com)
 
 ### ⭐ 如果这个项目对您有帮助，请给我们一个 Star！
 
@@ -218,7 +218,7 @@ Thanks to the following projects and communities for their support:
 
 - 🐛 [Issue Reports](https://github.com/dev4java/mcp-jira-service/issues)
 - 💬 [Discussions](https://github.com/dev4java/mcp-jira-service/discussions)
-- 📧 Email: [Project Maintainers](mailto:dev4java@example.com)
+- 📧 Email: [Project Maintainers](mailto:120171383@qq.com)
 
 ### ⭐ If this project helps you, please give us a Star!
 

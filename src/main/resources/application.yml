@@ -23,15 +23,15 @@ spring:
 
 # JIRA 配置(JIRA Configuration) - 必填项已提供默认值
 jira:
-  base-url: ${JIRA_BASE_URL:your jira base url}  # 演示 JIRA 地址
-  username: ${JIRA_USERNAME:your jira username}  # 演示用户名
+  base-url: ${JIRA_BASE_URL:}  # 演示 JIRA 地址
+  username: ${JIRA_USERNAME:}  # 演示用户名
   
   # JIRA 认证方式（二选一）：
   # 方式1：API Token 认证（推荐，更安全）- 优先使用
   api-token: ${JIRA_API_TOKEN:}  # 设置此项时会优先使用 API Token 认证
   
   # 方式2：密码认证（传统方式）- API Token 为空时使用
-  password: ${JIRA_PASSWORD:your jira password}  # 演示密码，仅在没有 API Token 时使用
+  password: ${JIRA_PASSWORD:}  # 演示密码，仅在没有 API Token 时使用
   
   timeout: ${JIRA_TIMEOUT:30000}
   max-connections: ${JIRA_MAX_CONNECTIONS:20}  # 减少连接数
@@ -103,3 +103,8 @@ info:
       version: '@java.version@'
   build:
     time: '@maven.build.timestamp@' 
+
+gitlab:
+  base-url: ${GITLAB_BASE_URL:}   # GitLab API 地址
+  token: ${GITLAB_TOKEN:}  # GitLab 访问 Token
+  project-id: ${GITLAB_PROJECT_ID:} # GitLab 项目ID

@@ -51,7 +51,7 @@ public class JiraProperties {
     public void setApiToken(String apiToken) {
         this.apiToken = apiToken;
     }
-
+    
     public int getTimeout() {
         return timeout;
     }

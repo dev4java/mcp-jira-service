@@ -18,4 +18,4 @@ public class McpJiraServiceApplication {
     public static void main(String[] args) {
         SpringApplication.run(McpJiraServiceApplication.class, args);
     }
-}
+} 

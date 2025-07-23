@@ -60,7 +60,7 @@ public class JiraMcpConfig {
         /**
          * JIRA MCP 服务 URL
          */
-        private String serviceUrl = "http://localhost:8010/mcp-jira/api";
+        private String serviceUrl = "http://localhost:8010/mcptools/api";
         
         /**
          * 连接超时时间（毫秒）

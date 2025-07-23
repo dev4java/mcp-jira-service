@@ -229,16 +229,16 @@
 
 ## 📞 支持和反馈
 
-- 🐛 [问题反馈](https://github.com/dev4java/mcp-jira-service/issues)
-- 💬 [功能讨论](https://github.com/dev4java/mcp-jira-service/discussions)
+- 🐛 [问题反馈](https://github.com/dev4java/mcptools-service/issues)
+- 💬 [功能讨论](https://github.com/dev4java/mcptools-service/discussions)
 - 📧 [邮件支持](mailto:dev4java@example.com)
-- 📖 [项目 Wiki](https://github.com/dev4java/mcp-jira-service/wiki)
+- 📖 [项目 Wiki](https://github.com/dev4java/mcptools-service/wiki)
 
 ---
 
 ## 🔮 下个版本计划
 
-查看我们的 [项目路线图](https://github.com/dev4java/mcp-jira-service/projects) 了解即将到来的功能和改进。
+查看我们的 [项目路线图](https://github.com/dev4java/mcptools-service/projects) 了解即将到来的功能和改进。
 
 **即将推出的功能:**
 - 🔌 插件系统支持
@@ -247,4 +247,4 @@
 - 🔄 批量操作 API
 - 🎨 Web UI 管理界面
 
-欢迎在 [Discussions](https://github.com/dev4java/mcp-jira-service/discussions) 中分享您的想法和建议！ 
+欢迎在 [Discussions](https://github.com/dev4java/mcptools-service/discussions) 中分享您的想法和建议！ 

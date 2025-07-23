@@ -22,7 +22,7 @@
 ### 🐛 报告 Bug
 
 在报告 Bug 之前：
-1. 搜索 [现有 Issues](https://github.com/dev4java/mcp-jira-service/issues) 确认问题未被报告
+1. 搜索 [现有 Issues](https://github.com/dev4java/mcptools-service/issues) 确认问题未被报告
 2. 使用最新版本重现问题
 
 报告 Bug 时请包含：
@@ -35,7 +35,7 @@
 ### 💡 建议新功能
 
 在建议新功能前：
-1. 搜索 [现有 Issues](https://github.com/dev4java/mcp-jira-service/issues) 确认功能未被提出
+1. 搜索 [现有 Issues](https://github.com/dev4java/mcptools-service/issues) 确认功能未被提出
 2. 考虑功能是否符合项目目标
 
 建议功能时请包含：
@@ -50,13 +50,13 @@
    ```bash
    # Fork 项目到您的 GitHub 账户
    # 然后克隆到本地
-   git clone https://github.com/YOUR_USERNAME/mcp-jira-service.git
-   cd mcp-jira-service
+   git clone https://github.com/YOUR_USERNAME/mcptools-service.git
+   cd mcptools-service
    ```
 
 2. **设置上游仓库**
    ```bash
-   git remote add upstream https://github.com/dev4java/mcp-jira-service.git
+   git remote add upstream https://github.com/dev4java/mcptools-service.git
    ```
 
 3. **创建功能分支**
@@ -97,8 +97,8 @@
 
 ```bash
 # 1. 克隆项目
-git clone https://github.com/dev4java/mcp-jira-service.git
-cd mcp-jira-service
+git clone https://github.com/dev4java/mcptools-service.git
+cd mcptools-service
 
 # 2. 复制配置文件
 cp env.example .env
@@ -203,15 +203,15 @@ docs(readme): update installation guide
 
 ### 报告 Bug
 
-使用 [Bug 报告模板](https://github.com/dev4java/mcp-jira-service/issues/new?template=bug_report.md)
+使用 [Bug 报告模板](https://github.com/dev4java/mcptools-service/issues/new?template=bug_report.md)
 
 ### 功能请求
 
-使用 [功能请求模板](https://github.com/dev4java/mcp-jira-service/issues/new?template=feature_request.md)
+使用 [功能请求模板](https://github.com/dev4java/mcptools-service/issues/new?template=feature_request.md)
 
 ### 讨论交流
 
-使用 [GitHub Discussions](https://github.com/dev4java/mcp-jira-service/discussions) 进行：
+使用 [GitHub Discussions](https://github.com/dev4java/mcptools-service/discussions) 进行：
 - 技术讨论
 - 使用问题
 - 项目规划
@@ -229,13 +229,13 @@ docs(readme): update installation guide
 
 感谢所有贡献者的努力！
 
-[![Contributors](https://contrib.rocks/image?repo=dev4java/mcp-jira-service)](https://github.com/dev4java/mcp-jira-service/graphs/contributors)
+[![Contributors](https://contrib.rocks/image?repo=dev4java/mcptools-service)](https://github.com/dev4java/mcptools-service/graphs/contributors)
 
 ## 📞 联系我们
 
 - 📧 邮件: [dev4java@example.com](mailto:dev4java@example.com)
-- 💬 讨论: [GitHub Discussions](https://github.com/dev4java/mcp-jira-service/discussions)
-- 🐛 问题: [GitHub Issues](https://github.com/dev4java/mcp-jira-service/issues)
+- 💬 讨论: [GitHub Discussions](https://github.com/dev4java/mcptools-service/discussions)
+- 🐛 问题: [GitHub Issues](https://github.com/dev4java/mcptools-service/issues)
 
 ---
 

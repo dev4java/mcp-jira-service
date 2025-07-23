@@ -1,6 +1,6 @@
 spring:
   application:
-    name: mcp-jira-service-test
+    name: mcptools-service-test
 
 # 测试用的 JIRA 配置(Test JIRA Configuration)
 jira:
@@ -25,7 +25,7 @@ mcp:
 # 测试日志配置(Test Logging Configuration)
 logging:
   level:
-    com.yusw.mcpjira: DEBUG
+    com.yusw.mcptools: DEBUG
     org.springframework.web: WARN
   pattern:
     console: "%d{HH:mm:ss.SSS} [%thread] %-5level %logger{36} - %msg%n" 

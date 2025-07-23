@@ -4,11 +4,11 @@
 server:
   port: 8080
   servlet:
-    context-path: /mcp-jira
+    context-path: /mcptools
 
 spring:
   application:
-    name: mcp-jira-service
+    name: mcptools-service
 
 # JIRA 私有化部署配置
 jira:
@@ -44,14 +44,14 @@ mcp:
 # 日志配置(Logging Configuration)
 logging:
   level:
-    com.yusw.mcpjira: INFO
+    com.yusw.mcptools: INFO
     org.springframework.web: WARN
     org.springframework.webflux: WARN
   pattern:
     console: "%d{yyyy-MM-dd HH:mm:ss} [%thread] %-5level %logger{36} - %msg%n"
     file: "%d{yyyy-MM-dd HH:mm:ss} [%thread] %-5level %logger{36} - %msg%n"
   file:
-    name: logs/mcp-jira-service.log
+    name: logs/mcptools-service.log
 
 # 管理端点配置
 management:
@@ -120,6 +120,6 @@ server:
 logging:
   level:
     root: INFO
-    com.yusw.mcpjira: DEBUG
+    com.yusw.mcptools: DEBUG
   pattern:
     console: "%d{yyyy-MM-dd HH:mm:ss} [%thread] %-5level %logger{36} - %msg%n" 

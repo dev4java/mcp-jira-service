@@ -1,11 +1,11 @@
 server:
   port: ${SERVER_PORT:8010}
   servlet:
-    context-path: /mcp-jira
+    context-path: /mcptools
 
 spring:
   application:
-    name: mcp-jira-service
+    name: mcptools-service
   
   # Jackson 配置(Jackson Configuration)
   jackson:
@@ -71,7 +71,7 @@ management:
 # 日志配置(Logging Configuration) - 开箱即用
 logging:
   level:
-    com.yusw.mcpjira: ${LOG_LEVEL_APP:INFO}  # 默认 INFO 级别
+    com.yusw.mcptools: ${LOG_LEVEL_APP:INFO}  # 默认 INFO 级别
     org.springframework.web: ${LOG_LEVEL_SPRING:WARN}  # 减少 Spring 日志
     org.springframework.webflux: ${LOG_LEVEL_WEBFLUX:WARN}
     com.atlassian.jira: ${LOG_LEVEL_JIRA:WARN}
@@ -79,7 +79,7 @@ logging:
     console: "%d{HH:mm:ss} %-5level %logger{36} - %msg%n"  # 简化控制台输出
     file: "%d{yyyy-MM-dd HH:mm:ss} [%thread] %-5level %logger{36} - %msg%n"
   file:
-    name: ${LOG_FILE:logs/mcp-jira-service.log}
+    name: ${LOG_FILE:logs/mcptools-service.log}
     max-size: ${LOG_MAX_SIZE:10MB}
     max-history: ${LOG_MAX_HISTORY:7}  # 减少历史文件数量
 

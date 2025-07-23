@@ -2,14 +2,14 @@
 
 # MCP JIRA Service 开箱即用启动脚本
 # Quick Start Script for MCP JIRA Service
-# GitHub: https://github.com/dev4java/mcp-jira-service
+# GitHub: https://github.com/dev4java/mcptools-service
 
 set -e
 
 echo "=========================================="
 echo "🚀 MCP JIRA Service 快速启动"
 echo "🚀 Quick Start for MCP JIRA Service"
-echo "📚 GitHub: https://github.com/dev4java/mcp-jira-service"
+echo "📚 GitHub: https://github.com/dev4java/mcptools-service"
 echo "=========================================="
 
 # 检查 Java 环境
@@ -106,7 +106,7 @@ echo "   - 用户名: admin"
 echo "   - 密码: admin123"
 echo ""
 echo "📚 更多信息："
-echo "   - 项目主页: https://github.com/dev4java/mcp-jira-service"
-echo "   - 使用文档: https://github.com/dev4java/mcp-jira-service/wiki"
-echo "   - 问题反馈: https://github.com/dev4java/mcp-jira-service/issues"
+echo "   - 项目主页: https://github.com/dev4java/mcptools-service"
+echo "   - 使用文档: https://github.com/dev4java/mcptools-service/wiki"
+echo "   - 问题反馈: https://github.com/dev4java/mcptools-service/issues"
 echo "==========================================" 

@@ -22,7 +22,7 @@ public class SimpleJiraClient {
     
     public SimpleJiraClient() {
         this.restTemplate = new RestTemplate();
-        this.baseUrl = "http://localhost:8010/mcp-jira/api";
+        this.baseUrl = "http://localhost:8010/mcptools/api";
     }
     
     /**

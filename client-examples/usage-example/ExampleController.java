@@ -1,8 +1,8 @@
 package com.yusw.controller;
 
-import com.yusw.mcpjira.model.CodeGenerationRequest;
-import com.yusw.mcpjira.model.GeneratedCode;
-import com.yusw.mcpjira.model.JiraIssue;
+import com.yusw.mcptools.model.CodeGenerationRequest;
+import com.yusw.mcptools.model.GeneratedCode;
+import com.yusw.mcptools.model.JiraIssue;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;

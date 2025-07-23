@@ -4,7 +4,7 @@
  */
 class JiraMcpClient {
     constructor(options = {}) {
-        this.baseUrl = options.baseUrl || 'http://localhost:8010/mcp-jira/api';
+        this.baseUrl = options.baseUrl || 'http://localhost:8010/mcptools/api';
         this.timeout = options.timeout || 30000;
         this.retryAttempts = options.retryAttempts || 3;
         this.retryDelay = options.retryDelay || 1000;
@@ -271,7 +271,7 @@ const examples = {
      */
     async basicUsage() {
         const client = new JiraMcpClient({
-            baseUrl: 'http://localhost:8010/mcp-jira/api',
+            baseUrl: 'http://localhost:8010/mcptools/api',
             timeout: 30000,
             retryAttempts: 3
         });

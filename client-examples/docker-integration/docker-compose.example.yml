@@ -2,13 +2,13 @@ version: '3.8'
 
 services:
   # JIRA MCP 服务(JIRA MCP Service)
-  jira-mcp-service:
-    image: your-registry/jira-mcp-service:latest
+  jira-mcptools-service:
+    image: your-registry/jira-mcptools-service:latest
     # 如果本地构建，使用以下配置：(For local build, use the following configuration:)
     # build:
-    #   context: ./path-to-jira-mcp-service
+    #   context: ./path-to-jira-mcptools-service
     #   dockerfile: Dockerfile
-    container_name: jira-mcp-service
+    container_name: jira-mcptools-service
     ports:
       - "8010:8010"
     environment:
@@ -20,18 +20,18 @@ services:
       # Spring Boot 配置(Spring Boot Configuration)
       - SPRING_PROFILES_ACTIVE=docker
       - SERVER_PORT=8010
-      - SERVER_SERVLET_CONTEXT_PATH=/mcp-jira
+      - SERVER_SERVLET_CONTEXT_PATH=/mcptools
       
       # 日志配置(Logging Configuration)
       - LOGGING_LEVEL_ROOT=INFO
       - LOGGING_LEVEL_COM_EXAMPLE=DEBUG
     volumes:
-      - jira-mcp-logs:/app/logs
+      - jira-mcptools-logs:/app/logs
     networks:
-      - jira-mcp-network
+      - jira-mcptools-network
     restart: unless-stopped
     healthcheck:
-      test: ["CMD", "curl", "-f", "http://localhost:8010/mcp-jira/actuator/health"]
+      test: ["CMD", "curl", "-f", "http://localhost:8010/mcptools/actuator/health"]
       interval: 30s
       timeout: 10s
       retries: 3
@@ -49,7 +49,7 @@ services:
       - "8080:8080"
     environment:
       # JIRA MCP 客户端配置(JIRA MCP Client Configuration)
-      - JIRA_MCP_SERVICE_URL=http://jira-mcp-service:8010/mcp-jira/api
+      - JIRA_MCP_SERVICE_URL=http://jira-mcptools-service:8010/mcptools/api
       - JIRA_MCP_CONNECTION_TIMEOUT=10000
       - JIRA_MCP_READ_TIMEOUT=60000
       
@@ -57,10 +57,10 @@ services:
       - SPRING_PROFILES_ACTIVE=docker
       - SERVER_PORT=8080
     depends_on:
-      jira-mcp-service:
+      jira-mcptools-service:
         condition: service_healthy
     networks:
-      - jira-mcp-network
+      - jira-mcptools-network
     restart: unless-stopped
 
   # 前端应用（可选）(Frontend application - optional)
@@ -74,21 +74,21 @@ services:
       - ./frontend/nginx.conf:/etc/nginx/nginx.conf
     depends_on:
       - your-app
-      - jira-mcp-service
+      - jira-mcptools-service
     networks:
-      - jira-mcp-network
+      - jira-mcptools-network
     restart: unless-stopped
 
   # Redis 缓存（可选，用于提高性能）(Redis cache - optional, for performance)
   redis:
     image: redis:7-alpine
-    container_name: jira-mcp-redis
+    container_name: jira-mcptools-redis
     ports:
       - "6379:6379"
     volumes:
       - redis-data:/data
     networks:
-      - jira-mcp-network
+      - jira-mcptools-network
     restart: unless-stopped
     command: redis-server --appendonly yes
 
@@ -105,11 +105,11 @@ services:
     volumes:
       - postgres-data:/var/lib/postgresql/data
     networks:
-      - jira-mcp-network
+      - jira-mcptools-network
     restart: unless-stopped
 
 volumes:
-  jira-mcp-logs:
+  jira-mcptools-logs:
     driver: local
   redis-data:
     driver: local
@@ -117,7 +117,7 @@ volumes:
     driver: local
 
 networks:
-  jira-mcp-network:
+  jira-mcptools-network:
     driver: bridge
     ipam:
       config:
@@ -131,13 +131,13 @@ networks:
 version: '3.8'
 
 services:
-  jira-mcp-service:
+  jira-mcptools-service:
     environment:
       - SPRING_PROFILES_ACTIVE=dev
       - LOGGING_LEVEL_ROOT=DEBUG
     volumes:
-      - ./jira-mcp-service/src:/app/src
-      - ./jira-mcp-service/target:/app/target
+      - ./jira-mcptools-service/src:/app/src
+      - ./jira-mcptools-service/target:/app/target
     
   your-app:
     environment:
@@ -155,7 +155,7 @@ services:
 version: '3.8'
 
 services:
-  jira-mcp-service:
+  jira-mcptools-service:
     environment:
       - SPRING_PROFILES_ACTIVE=prod
       - LOGGING_LEVEL_ROOT=WARN
@@ -199,6 +199,6 @@ services:
     depends_on:
       - your-app
     networks:
-      - jira-mcp-network
+      - jira-mcptools-network
     deploy:
       replicas: 1 

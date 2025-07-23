@@ -2,12 +2,12 @@ version: '3.8'
 
 services:
   # MCP JIRA 服务主应用 - 开箱即用
-  mcp-jira-service:
+  mcptools-service:
     build:
       context: .
       dockerfile: Dockerfile
-    image: mcp-jira-service:latest
-    container_name: mcp-jira-service
+    image: mcptools-service:latest
+    container_name: mcptools-service
     restart: unless-stopped
     ports:
       - "8010:8010"  # 应用端口
@@ -43,7 +43,7 @@ services:
       # 代码生成输出目录
       - ./generated-code:/app/generated-code
     networks:
-      - mcp-jira-network
+      - mcptools-network
     healthcheck:
       test: ["CMD", "curl", "-f", "http://localhost:8011/actuator/health"]
       interval: 30s
@@ -53,6 +53,6 @@ services:
 
 # 网络配置
 networks:
-  mcp-jira-network:
+  mcptools-network:
     driver: bridge
-    name: mcp-jira-network 
+    name: mcptools-network 
